@@ -28,7 +28,7 @@ jobs:
             --document-name "AWS-RunShellScript" \
             --comment "Manual deploy from GitHub Actions" \
             --parameters commands='[
-              "IMAGE=\"${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPOSITORY }}:latest\"",
+              "IMAGE=${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPOSITORY }}:latest",
               "aws ecr get-login-password --region ${{ vars.AWS_REGION }} | docker login --username AWS --password-stdin ${{ vars.ECR_REGISTRY }}",
               "docker pull \"$IMAGE\"",
               "docker stop rock-of-ages-api || true",
